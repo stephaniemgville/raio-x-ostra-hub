@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -89,83 +89,86 @@ textarea{resize:vertical}
 <div class="container">
   <div id="form-section">
 
-    <div class="field">
-      <label class="label"><span class="step">1</span>Qual e o seu @ do Instagram?</label>
-      <div class="at-wrap">
-        <span class="at-sym">@</span>
-        <input type="text" id="username" class="input input-at" placeholder="seuarroba">
-      </div>
-    </div>
+```
+<div class="field">
+  <label class="label"><span class="step">1</span>Qual e o seu @ do Instagram?</label>
+  <div class="at-wrap">
+    <span class="at-sym">@</span>
+    <input type="text" id="username" class="input input-at" placeholder="seuarroba">
+  </div>
+</div>
 
-    <div class="field">
-      <label class="label"><span class="step">2</span>Qual e o seu nicho?</label>
-      <input type="text" id="nicho" class="input" placeholder="Ex: coach de emagrecimento, fotografo, loja de roupas...">
-    </div>
+<div class="field">
+  <label class="label"><span class="step">2</span>Qual e o seu nicho?</label>
+  <input type="text" id="nicho" class="input" placeholder="Ex: coach de emagrecimento, fotografo, loja de roupas...">
+</div>
 
-    <div class="field">
-      <label class="label"><span class="step">3</span>Qual e o seu objetivo?</label>
-      <div class="obj-row">
-        <div class="obj-btn" onclick="selectObj('crescer',this)">
-          <div class="emoji">🚀</div>
-          <div class="obj-label">Crescer</div>
-          <div class="obj-desc">Ganhar mais seguidores</div>
-        </div>
-        <div class="obj-btn" onclick="selectObj('vender',this)">
-          <div class="emoji">💰</div>
-          <div class="obj-label">Vender</div>
-          <div class="obj-desc">Converter em clientes</div>
-        </div>
-        <div class="obj-btn" onclick="selectObj('posicionar',this)">
-          <div class="emoji">🏆</div>
-          <div class="obj-label">Posicionar</div>
-          <div class="obj-desc">Ser referencia no nicho</div>
-        </div>
-      </div>
+<div class="field">
+  <label class="label"><span class="step">3</span>Qual e o seu objetivo?</label>
+  <div class="obj-row">
+    <div class="obj-btn" onclick="selectObj('crescer',this)">
+      <div class="emoji">🚀</div>
+      <div class="obj-label">Crescer</div>
+      <div class="obj-desc">Ganhar mais seguidores</div>
     </div>
-
-    <div class="field">
-      <label class="label"><span class="step">4</span>Qual e a sua bio do Instagram?</label>
-      <div class="toggle-row">
-        <button class="toggle-btn active" onclick="toggleBio('text',this)">✏️ Digitar</button>
-        <button class="toggle-btn" onclick="toggleBio('image',this)">📷 Enviar print</button>
-      </div>
-      <div id="bio-text">
-        <textarea id="bio" class="input" rows="3" placeholder="Cole aqui o texto da sua bio atual..."></textarea>
-      </div>
-      <div id="bio-image" style="display:none">
-        <input type="file" id="bio-file" accept="image/*" style="display:none" onchange="handleBioFile(this)">
-        <div class="upload-box" id="bio-upload" onclick="document.getElementById('bio-file').click()">
-          <div class="upload-icon">📷</div>
-          <div>Clique para enviar um print da sua bio</div>
-          <div class="upload-hint">JPG, PNG ou HEIC</div>
-        </div>
-      </div>
+    <div class="obj-btn" onclick="selectObj('vender',this)">
+      <div class="emoji">💰</div>
+      <div class="obj-label">Vender</div>
+      <div class="obj-desc">Converter em clientes</div>
     </div>
-
-    <div class="field">
-      <label class="label"><span class="step">5</span>Seus ultimos 6 posts</label>
-      <div class="toggle-row">
-        <button class="toggle-btn active" onclick="togglePosts('text',this)">✍️ Descrever</button>
-        <button class="toggle-btn" onclick="togglePosts('image',this)">📸 Print do feed</button>
-      </div>
-      <div id="posts-text">
-        <textarea id="posts" class="input" rows="5" placeholder="O que voce costuma postar? Descreva os temas, formatos e o tom dos seus conteudos..."></textarea>
-      </div>
-      <div id="posts-image" style="display:none">
-        <input type="file" id="feed-file" accept="image/*" style="display:none" onchange="handleFeedFile(this)">
-        <div class="upload-box" id="feed-upload" onclick="document.getElementById('feed-file').click()">
-          <div class="upload-icon">📸</div>
-          <div>Envie um print do seu feed</div>
-          <div class="upload-hint">JPG, PNG ou HEIC</div>
-        </div>
-      </div>
-      <div class="tip">
-        <span style="font-size:16px;flex-shrink:0">💡</span>
-        <div><strong>Quanto mais detalhe, melhor a analise.</strong> Este e um diagnostico personalizado e individual - quanto mais informacoes voce compartilhar, mais preciso e util sera o resultado para o seu perfil.</div>
-      </div>
+    <div class="obj-btn" onclick="selectObj('posicionar',this)">
+      <div class="emoji">🏆</div>
+      <div class="obj-label">Posicionar</div>
+      <div class="obj-desc">Ser referencia no nicho</div>
     </div>
+  </div>
+</div>
 
-    <button class="btn-analyze" id="btn-analyze" onclick="analyze()">🔍 Analisar Perfil</button>
+<div class="field">
+  <label class="label"><span class="step">4</span>Qual e a sua bio do Instagram?</label>
+  <div class="toggle-row">
+    <button class="toggle-btn active" onclick="toggleBio('text',this)">✏️ Digitar</button>
+    <button class="toggle-btn" onclick="toggleBio('image',this)">📷 Enviar print</button>
+  </div>
+  <div id="bio-text">
+    <textarea id="bio" class="input" rows="3" placeholder="Cole aqui o texto da sua bio atual..."></textarea>
+  </div>
+  <div id="bio-image" style="display:none">
+    <input type="file" id="bio-file" accept="image/*" style="display:none" onchange="handleBioFile(this)">
+    <div class="upload-box" id="bio-upload" onclick="document.getElementById('bio-file').click()">
+      <div class="upload-icon">📷</div>
+      <div>Clique para enviar um print da sua bio</div>
+      <div class="upload-hint">JPG, PNG ou HEIC</div>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label"><span class="step">5</span>Seus ultimos 6 posts</label>
+  <div class="toggle-row">
+    <button class="toggle-btn active" onclick="togglePosts('text',this)">✍️ Descrever</button>
+    <button class="toggle-btn" onclick="togglePosts('image',this)">📸 Print do feed</button>
+  </div>
+  <div id="posts-text">
+    <textarea id="posts" class="input" rows="5" placeholder="O que voce costuma postar? Descreva os temas, formatos e o tom dos seus conteudos..."></textarea>
+  </div>
+  <div id="posts-image" style="display:none">
+    <input type="file" id="feed-file" accept="image/*" style="display:none" onchange="handleFeedFile(this)">
+    <div class="upload-box" id="feed-upload" onclick="document.getElementById('feed-file').click()">
+      <div class="upload-icon">📸</div>
+      <div>Envie um print do seu feed</div>
+      <div class="upload-hint">JPG, PNG ou HEIC</div>
+    </div>
+  </div>
+  <div class="tip">
+    <span style="font-size:16px;flex-shrink:0">💡</span>
+    <div><strong>Quanto mais detalhe, melhor a analise.</strong> Este e um diagnostico personalizado e individual - quanto mais informacoes voce compartilhar, mais preciso e util sera o resultado para o seu perfil.</div>
+  </div>
+</div>
+
+<button class="btn-analyze" id="btn-analyze" onclick="analyze()">🔍 Analisar Perfil</button>
+```
+
   </div>
 
   <div class="loading" id="loading">
@@ -380,15 +383,17 @@ async function analyze() {
       body: JSON.stringify(payload)
     });
 
-    var data = await res.json();
-    var text = (data.content || []).map(function(b){ return b.text || ''; }).join('');
-    var clean = text.replace(/[\u0060]+json|[\u0060]+/g, '').trim();
-    var parsed = JSON.parse(clean);
+    var parsed = await res.json();
+    if (parsed.error) {
+      showError('Erro: ' + parsed.error);
+      return;
+    }
     showResult(parsed);
   } catch(e) {
     showError('Ops! Algo deu errado. Tente novamente.');
   }
 }
 </script>
+
 </body>
 </html>

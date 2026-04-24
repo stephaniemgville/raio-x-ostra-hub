@@ -84,3 +84,5 @@ return Response.json(parsed);
 return Response.json({ error: “Erro interno: “ + error.message }, { status: 500 });
 }
 }
+}
+}

@@ -88,16 +88,15 @@ textarea{resize:vertical}
 
 <div class="container">
   <div id="form-section">
+    <div class="field">
+      <label class="label"><span class="step">1</span>Qual e o seu @ do Instagram?</label>
+      <div class="at-wrap">
+        <span class="at-sym">@</span>
+        <input type="text" id="username" class="input input-at" placeholder="seuarroba">
+      </div>
+    </div>
 
 ```
-<div class="field">
-  <label class="label"><span class="step">1</span>Qual e o seu @ do Instagram?</label>
-  <div class="at-wrap">
-    <span class="at-sym">@</span>
-    <input type="text" id="username" class="input input-at" placeholder="seuarroba">
-  </div>
-</div>
-
 <div class="field">
   <label class="label"><span class="step">2</span>Qual e o seu nicho?</label>
   <input type="text" id="nicho" class="input" placeholder="Ex: coach de emagrecimento, fotografo, loja de roupas...">
@@ -218,30 +217,49 @@ function togglePosts(mode, el) {
   document.getElementById('posts-image').style.display = mode === 'image' ? 'block' : 'none';
 }
 
+function compressImage(file, callback) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      var maxSize = 800;
+      var w = img.width, h = img.height;
+      if (w > maxSize || h > maxSize) {
+        if (w > h) { h = Math.round(h * maxSize / w); w = maxSize; }
+        else { w = Math.round(w * maxSize / h); h = maxSize; }
+      }
+      canvas.width = w;
+      canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      var compressed = canvas.toDataURL('image/jpeg', 0.7).split(',')[1];
+      callback(compressed);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function handleBioFile(input) {
   var file = input.files[0];
   if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    bioImageData = e.target.result.split(',')[1];
+  compressImage(file, function(compressed) {
+    bioImageData = compressed;
     var box = document.getElementById('bio-upload');
     box.classList.add('has-file');
     box.innerHTML = '<div style="font-size:28px;margin-bottom:6px">✅</div><div class="upload-name">' + file.name + '</div><div class="upload-hint">Clique para trocar</div>';
-  };
-  reader.readAsDataURL(file);
+  });
 }
 
 function handleFeedFile(input) {
   var file = input.files[0];
   if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    feedImageData = e.target.result.split(',')[1];
+  compressImage(file, function(compressed) {
+    feedImageData = compressed;
     var box = document.getElementById('feed-upload');
     box.classList.add('has-file');
     box.innerHTML = '<div style="font-size:28px;margin-bottom:6px">✅</div><div class="upload-name">' + file.name + '</div><div class="upload-hint">Clique para trocar</div>';
-  };
-  reader.readAsDataURL(file);
+  });
 }
 
 function showLoading() {

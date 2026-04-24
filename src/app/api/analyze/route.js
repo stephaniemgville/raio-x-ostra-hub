@@ -78,7 +78,7 @@ if (!jsonMatch) {
 
 const parsed = JSON.parse(jsonMatch[0]);
 return Response.json(parsed);
-```
+
 
 } catch (error) {
 return Response.json({ error: “Erro interno: “ + error.message }, { status: 500 });
